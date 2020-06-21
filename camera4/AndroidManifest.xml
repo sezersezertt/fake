@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="28" android:compileSdkVersionCodename="9" android:installLocation="auto" package="net.sourceforge.opencamerb" platformBuildVersionCode="27" platformBuildVersionName="">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.microphone"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
+    <application android:allowBackup="true" android:appComponentFactory="android.support.v4.app.CoreComponentFactory" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:name="net.sourceforge.opencamerb.OpenCameraApplication" android:testOnly="false" android:theme="@style/AppTheme">
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:name="net.sourceforge.opencamerb.MainActivity" android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE_SECURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.VIDEO_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.VIDEO_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity>
+        <activity android:label="@string/scan_ble" android:name="net.sourceforge.opencamerb.remotecontrol.DeviceScanner">
+            <intent-filter>
+                <action android:name="net.sourceforge.opencamerb.Remotecontrol.DeviceScanner"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:icon="@drawable/ic_launcher_take_photo" android:label="@string/take_photo" android:name="net.sourceforge.opencamerb.TakePhoto" android:screenOrientation="landscape" android:taskAffinity=""/>
+        <receiver android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="net.sourceforge.opencamerb.MyWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info"/>
+        </receiver>
+        <receiver android:icon="@drawable/ic_launcher_take_photo" android:label="@string/take_photo" android:name="net.sourceforge.opencamerb.MyWidgetProviderTakePhoto">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_info_take_photo"/>
+        </receiver>
+        <service android:icon="@drawable/ic_photo_camera_white_48dp" android:label="@string/camera" android:name="net.sourceforge.opencamerb.MyTileService" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:icon="@drawable/ic_videocam_white_48dp" android:label="@string/record_video" android:name="net.sourceforge.opencamerb.MyTileServiceVideo" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:icon="@drawable/ic_face_white_48dp" android:label="@string/selfie" android:name="net.sourceforge.opencamerb.MyTileServiceFrontCamera" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="true" android:name="net.sourceforge.opencamerb.remotecontrol.BluetoothLeService"/>
+        <meta-data android:name="com.applisto.appcloner.name" android:value="Open Camera"/>
+        <meta-data android:name="com.applisto.appcloner.originalName" android:value="Open Camera"/>
+        <meta-data android:name="com.applisto.appcloner.originalPackageName" android:value="bmV0LnNvdXJjZWZvcmdlLm9wZW5jYW1lcmE="/>
+        <meta-data android:name="com.applisto.appcloner.cloneNumber" android:value="1"/>
+        <meta-data android:name="com.applisto.appcloner.cloneSource" android:value="installed_app"/>
+        <meta-data android:name="com.applisto.appcloner.cloneTimestamp" android:value="\ 1592710665445"/>
+        <meta-data android:name="com.applisto.appcloner.cloneBuildSerial" android:value="\ 93218112720303"/>
+        <meta-data android:name="com.applisto.appcloner.cloneBuildManufacturer" android:value="SPRD"/>
+        <meta-data android:name="com.applisto.appcloner.cloneBuildModel" android:value="reeder_3G_Tablet"/>
+        <meta-data android:name="com.applisto.appcloner.clonePremiumVersion" android:value="true"/>
+        <meta-data android:name="com.applisto.appcloner.forceDeviceLock" android:value="false"/>
+        <meta-data android:name="com.applisto.appcloner.runtimeModdingOptions" android:value="true"/>
+        <meta-data android:name="com.applisto.appcloner.bundleOriginalApp" android:value="false"/>
+        <meta-data android:name="com.applisto.appcloner.versionCode" android:value="77"/>
+        <meta-data android:name="com.applisto.appcloner.versionName" android:value="1.48.1"/>
+        <meta-data android:name="com.applisto.appcloner.appClonerVersionCode" android:value="19111210"/>
+        <meta-data android:name="com.applisto.appcloner.appClonerVersionName" android:value="1.5.32"/>
+        <meta-data android:name="com.applisto.appcloner.appClonerClassesVersionCode" android:value="20190829"/>
+        <meta-data android:name="com.applisto.appcloner.originalSignatures" android:value="AQAAABwAAABhAG4AZAByAG8AaQBkAC4AYwBvAG4AdABlAG4AdAAuAHAAbQAuAFMAaQBnAG4AYQB0AHUAcgBlAAAAAACbAwAAMIIDlzCCAn+gAwIBAgIEYPeeKjANBgkqhkiG9w0BAQsFADB8MQswCQYDVQQGEwJVSzEXMBUGA1UECBMOQ2FtYnJpZGdlc2hpcmUxEjAQBgNVBAcTCUNhbWJyaWRnZTEUMBIGA1UEChMLTWFyayBIYXJtYW4xFDASBgNVBAsTC01hcmsgSGFybWFuMRQwEgYDVQQDEwtNYXJrIEhhcm1hbjAeFw0xMjA0MDExODIxMjNaFw0zOTA4MTgxODIxMjNaMHwxCzAJBgNVBAYTAlVLMRcwFQYDVQQIEw5DYW1icmlkZ2VzaGlyZTESMBAGA1UEBxMJQ2FtYnJpZGdlMRQwEgYDVQQKEwtNYXJrIEhhcm1hbjEUMBIGA1UECxMLTWFyayBIYXJtYW4xFDASBgNVBAMTC01hcmsgSGFybWFuMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtKFRnPPWXer9LFvitHfO4Aa3CVx5JyeRR+hi0w2P3/wkEOLpTiN4UFg4hOXdnRY0XO4/pSe7CsZ11j85bgLEOGf7pyL+Fkd97JKi1Ba9kQ13Ef9ck2Zb0J8Htj3v9c1Endmz9o+fJCyoGNQ4akR7AY5phThvHBaXT2dFWMMZXo4nFWalw3oyZE3HKZP57j+8CrFSFRBI03aPd3RUI1TMWqRtURCRQ2660dwDGb6y1GUbfyMM5Mf+srsokkEQHrh91XZ4RDPY/gLwnjy93JB2sVj74aT7Qc9luDwYR3MyAtZkEKK3E8Inw1HcOpmsQ4kGvmOvKk/jygBAdNxjgDKJwwIDAQABoyEwHzAdBgNVHQ4EFgQUW9QlmSYiZI+UyHrU9uqLZO3NnqowDQYJKoZIhvcNAQELBQADggEBAI5Q+DZOVK33E7FQaFH433tr29lP/UobskwognePBYF/kRnjXbuxYephk8kch9KW+Ng7XQqV3aSyDweps51BTtVnS3yDOSI9i5JV/RASXo16SKJF22+20ElQL93RiDP3ho6MNoKXoA21I0+QmEAqIjnXimgq/o7fWb/AHxI0Yv5zi7mIYUGK40vjKD2BopBJ1G12eh+DeCnORypNBw/piSz3QvylZ5kZm7tvF1mgM/C1VF0lNVZlQGxgQPk+zqPwcipjtqbBGLpuJVQbxOWgd0qTg2kJMnkI2hYQ/LsF1gPORnEbkwMZUS3AOnC6Sa1p/pwj6MOHOLMVMD6QvaffUN0A"/>
+        <meta-data android:name="com.android.vending.derived.apk.id" android:value="1"/>
+        <provider android:authorities="net.sourceforge.opencamerb.com.applisto.appcloner.classes.DefaultProvider" android:exported="true" android:initOrder="2147483647" android:name="com.applisto.appcloner.classes.DefaultProvider"/>
+        <service android:exported="true" android:name="com.applisto.appcloner.service.RemoteService"/>
+        <receiver android:exported="true" android:name="com.applisto.appcloner.classes.DefaultProvider$DefaultReceiver"/>
+        <activity android:exported="true" android:name="com.applisto.appcloner.classes.DefaultProvider$MyActivity"/>
+        <receiver android:name="com.applisto.appcloner.classes.FakeCamera$FakeCameraReceiver">
+            <intent-filter>
+                <action android:name="com.applisto.appcloner.action.FAKE_CAMERA_SELECT_CAMERA_PICTURE"/>
+                <action android:name="com.applisto.appcloner.action.FAKE_CAMERA_ROTATE_CLOCKWISE"/>
+                <action android:name="com.applisto.appcloner.action.FAKE_CAMERA_ROTATE_ANTI_CLOCKWISE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.applisto.appcloner.classes.DisableClipboardAccess$ClearClipboardReceiver"/>
+        <activity android:name="com.applisto.appcloner.classes.FakeCamera$FakeCameraActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+    </application>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="net.dinglisch.android.tasker.PERMISSION_RUN_TASKS"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+</manifest>
